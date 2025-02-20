@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('phone'); // Phone number
             $table->string('address'); // Address
             $table->string('password'); // Password (hashed)
+            $table->string('service_type')->nullable(); // Service type for Service providers
+            $table->string('photo')->nullable(); // Profile photo for Service providers
             $table->timestamps(); // Created and updated timestamps
         });
     }

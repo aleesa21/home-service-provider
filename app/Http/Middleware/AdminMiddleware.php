@@ -15,7 +15,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        // If unauthorized, return a 403 error
-        abort(403, 'allowed xaina la sorry:) jau aaba byee');
+        return redirect()->route('login')->with('error', 'You need to login first.');
     }
 }
