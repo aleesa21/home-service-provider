@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    @include('homepage.pheader')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provider Profile</title>
@@ -14,6 +15,7 @@
         <div class="profile-card">
             <div class="profile-img">
                 @if($provider->photo)
+                
                 <img src="{{ Storage::url($provider->photo) }}" alt="Profile Image">
                 @else
                 <img src="{{ asset('images/default-profile.png') }}" alt="Default Profile Image">
@@ -25,10 +27,16 @@
                 <p><span>Phone: </span>{{ $provider->phone }}</p>
                 <p><span>Address: </span>{{ $provider->address }}</p>
                 @if($provider->service_type)
-                <div class="service-type">{{ $provider->service_type }}</div>
+                @foreach(json_decode($provider->service_type, true) as $service)
+                <div class="service-type">{{ $service }}</div>
+                @endforeach
                 @endif
             </div>
+
         </div>
+        <a href="{{ route('provider.profile.edit', $provider->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded">
+            Edit Profile
+        </a>
     </div>
 </body>
 

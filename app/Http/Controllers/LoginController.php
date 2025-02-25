@@ -8,6 +8,10 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('homepage.login'); // Adjust the path to your login view
+    }
     // Handle the login form submission
     public function login(Request $req)
     {
@@ -17,29 +21,27 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        // Attempt to authenticate the user
         if (Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
             $user = Auth::user();
             
+            // Regenerate the session ID to prevent session fixation
+            $req->session()->regenerate();
+
+            // Redirect based on user role
             if ($user->role === 'Admin') {
-                return redirect()->route('adash'); // Redirect admin
+                return redirect()->route('adash'); // Redirect admin dashboard
             } 
             elseif ($user->role === 'Service-provider') {
-                return redirect()->route('pdash',['id' => $user->id]); // Redirect service provider
+                return redirect()->route('pdash', ['id' => $user->id]); // Redirect provider dashboard
             }
         
             return redirect()->route('udash'); // Redirect normal users
         }
-        
 
-        
-
-        // If authentication fails, return back with an error
-        return back()->withErrors([
-            'email' => 'The provided credentials are incorrect.',
+        // If authentication fails, return back with the input and error message
+        return back()->withInput()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
         ]);
     }
-    
-    
-        
-        
 }

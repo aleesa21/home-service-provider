@@ -149,7 +149,7 @@
              <!-- Phone -->
              <div class="form-group">
                  <label for="phone">Phone</label>
-                 <input type="text" value="{{ old('phone') }}" id="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter your phone number" name="phone">
+                 <input type="number " value="{{ old('phone') }}" id="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter your phone number" name="phone">
                  <span class="text-danger">
                      @error('phone')
                      {{ $message }}
@@ -171,7 +171,7 @@
              <!-- Password -->
              <div class="form-group">
                  <label for="password">Password</label>
-                 <input type="password" id="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" name="password">
+                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" name="password">
                  <span class="text-danger">
                      @error('password')
                      {{ $message }}

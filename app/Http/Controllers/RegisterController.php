@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+    public function showRegisterForm()
+    {
+        return view('homepage.register'); // Adjust the path to your register view
+    }
     public function register(Request $req)
     {
         // Validate the form inputs
@@ -14,7 +18,7 @@ class RegisterController extends Controller
             'register-as' => 'required|in:Customer,Service-provider',
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required',
+            'phone' => 'required|unique:users|max:10',
             'address' => 'required|string|max:500',
             'password' => 'required',
             'confirm-password' => 'required|same:password',

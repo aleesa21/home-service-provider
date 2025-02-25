@@ -10,14 +10,22 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        return view('dashboard.profileupdate');
+         // Get the current logged-in user
+    $user = Auth::user();  // This gets the authenticated user
+
+    // Decode the service_type JSON into an array
+    $serviceTypes = json_decode($user->service_type, true);
+
+    // Return the view with user data and decoded service types
+    return view('dashboard.profileupdate', compact('user', 'serviceTypes'));
     }
 
     public function update(Request $req)
     {
         // Validate the form inputs
         $req->validate([
-            'service-type' => 'required|string|max:255',
+            'service-type' => 'required|array|min:1',  
+            'service-type.*' => 'string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
     
@@ -36,11 +44,13 @@ class ProfileController extends Controller
     
         // Update the user's data
         $user->update([
-            'service_type' => $req->input('service-type'),
+            'service_type' => json_encode($req->input('service-type')), // Convert array to JSON  
             'photo' => $photoPath,
         ]);
     
+        // Redirect back to the dashboard with a success message
         return redirect()->route('pdash', ['id' => $user->id])->with('success', 'Profile updated successfully');
     }
     
+
 }

@@ -49,37 +49,38 @@
                 </div>
             </div>
         </div>
-      <!-- Available Service Providers Section -->
-<div class="providers-section">
-    <h2>Available Service Providers</h2>
-    <div class="providers-grid">
-        @foreach($providers as $provider)
-        <div class="provider-card">
-            <div class="provider-img">
-                @if($provider->photo)
-                <img src="{{ Storage::url($provider->photo) }}" alt="{{ $provider->name }}">
-                @else
-                <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
-                @endif
-            </div>
-            <div class="provider-details">
-    <h3>{{ $provider->name }}</h3>
-    <p><span>Email: </span>{{ $provider->email }}</p>
-    <p class="phone">
-        <span>Phone: </span>
-        xxx-xxxxxxx
-        <span class="login-message">
-            <a href="{{ route('login') }}" class="login-link">Login to see</a>
-        </span>
-    </p>
-    <p><span>Address: </span>{{ $provider->address }}</p>
-    <p><span>Service Type: </span>{{ $provider->service_type }}</p>
-</div>
+        <!-- Available Service Providers Section -->
+        <div class="providers-section">
+            <h2>Available Service Providers</h2>
+            <div class="providers-grid">
+                @foreach($providers as $provider)
+                <div class="provider-card">
+                    <div class="provider-img">
+                        @if($provider->photo)
+                        <img src="{{ Storage::url($provider->photo) }}" alt="{{ $provider->name }}">
+                        <!-- <img src="{{ asset('storage/profile_photos/' . $provider->photo) }}" alt="Profile Photo" class="profile-photo"> -->
+                        @else
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
+                        @endif
+                    </div>
+                    <div class="provider-details">
+                        <h3>{{ $provider->name }}</h3>
+                        <p><span>Email: </span>{{ $provider->email }}</p>
+                        <p class="phone">
+                            <span>Phone: </span>
+                            xxx-xxxxxxx
+                            <span class="login-message">
+                                <a href="{{ route('login') }}" class="login-link">Login to see</a>
+                            </span>
+                        </p>
+                        <p><span>Address: </span>{{ $provider->address }}</p>
+                        <p><span>Service Type: </span>{{ $provider->service_type }}</p>
+                    </div>
 
+                </div>
+                @endforeach
+            </div>
         </div>
-        @endforeach
-    </div>
-</div>
 
 
     </div>

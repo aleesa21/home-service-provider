@@ -1,4 +1,4 @@
-/* Global Styles */
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #f4f7fc, #d6e4ff);
@@ -108,4 +108,29 @@ body {
     .profile-details {
         padding: 15px 0;
     }
+}
+/* Update Profile Button */
+.bg-blue-500 {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.bg-blue-500:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.bg-blue-500:active {
+    background-color: #004085;
+    transform: scale(1);
 }

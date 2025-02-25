@@ -18,7 +18,10 @@
         <!-- Service Type -->
         <div class="form-group">
             <label for="service-type">Service Type</label>
-            <input type="text" id="service-type" class="form-control" placeholder="Enter your service type" name="service-type" value="{{ old('service-type') }}">
+            <div id="service-type-container">
+                <input type="text" name="service-type[]" value="{{ old('service-type.0') }}" placeholder="Enter service type">
+            </div>
+            <button type="button" id="add-service">Add More</button>
             <span class="text-danger">
                 @error('service-type')
                 {{ $message }}
@@ -41,6 +44,28 @@
         <button type="submit">Update Profile</button>
     </form>
 </div>
+
+<!-- Add JavaScript for dynamic service type fields -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('add-service').addEventListener('click', function() {
+            let container = document.getElementById('service-type-container');
+            let div = document.createElement('div');
+            div.classList.add('service-input');
+            div.innerHTML = `
+                <input type="text" name="service-type[]" placeholder="Enter service type">
+                <button type="button" class="remove-service">Remove</button>
+            `;
+            container.appendChild(div);
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-service')) {
+                event.target.parentElement.remove();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

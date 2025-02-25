@@ -148,29 +148,3 @@
     font-size: 14px;
     margin: 4px 0;
 }
-/* Styling for the login message */
-.login-message {
-    display: none; /* Hide the message by default */
-    position: absolute;
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    margin-top: 5px;
-    width: max-content;
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Show the login message when hovering over the phone number */
-.phone:hover .login-message {
-    display: block;
-}
-
-/* Styling for the login link */
-.login-link {
-    color: red;
-    text-decoration: none;
-    font-weight: bold;
-}

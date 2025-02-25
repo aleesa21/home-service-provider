@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('users'); // Delete the existing users table (if it exists)
+
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // Primary key
             $table->string('role')->default('Customer'); // User role (Customer or Service-provider)
@@ -19,7 +21,7 @@ return new class extends Migration
             $table->string('phone'); // Phone number
             $table->string('address'); // Address
             $table->string('password'); // Password (hashed)
-            $table->string('service_type')->nullable(); // Service type for Service providers
+            $table->json('service_type')->nullable(); // Store multiple service types as JSON
             $table->string('photo')->nullable(); // Profile photo for Service providers
             $table->timestamps(); // Created and updated timestamps
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users'); // Rollback: delete the table
     }
 };
