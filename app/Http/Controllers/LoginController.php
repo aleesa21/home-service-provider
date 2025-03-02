@@ -28,6 +28,12 @@ class LoginController extends Controller
             // Regenerate the session ID to prevent session fixation
             $req->session()->regenerate();
 
+            // Check if a redirect URL exists
+            if ($req->has('redirect')) {
+                return redirect($req->redirect);
+            }
+    
+
             // Redirect based on user role
             if ($user->role === 'Admin') {
                 return redirect()->route('adash'); // Redirect admin dashboard

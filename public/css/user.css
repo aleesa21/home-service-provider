@@ -132,19 +132,46 @@
     border-radius: 10px;
 }
 
-.provider-details {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
+.provider-details p {
+    font-weight: bold; /* Make the text bold */
+    font-size: 20px; /* Slightly increase the font size */
+    color: #222; /* Slightly darker for better readability */
+    text-transform: capitalize; /* Capitalize first letters */
+    text-align: center; /* Center the name */
+    margin: 10px 0 5px; /* Add some spacing */
+    font-family: 'Poppins', sans-serif; /* Use a modern font */
+}
+
+
+/* Service Type Label */
+.service-type-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #007BFF;
+    margin-bottom: 10px;
     text-align: left;
 }
 
-.provider-details h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
+/* Container to hold service badges */
+.service-types {
+    display: flex;                
+    flex-wrap: nowrap;            
+    gap: 10px;                    
+    overflow: hidden;           
 }
 
-.provider-details p {
-    font-size: 14px;
-    margin: 4px 0;
+/* Service Badge */
+.service-type {
+    background: linear-gradient(135deg, #007bff, #0044cc); /* Gradient background */
+    color: white;
+    padding: 5px 12px;           /* Adjust padding for text fitting */
+    border-radius: 20px;         /* Rounded corners */
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.service-type:hover {
+    background: linear-gradient(135deg, #0056b3, #003399); /* Darker gradient on hover */
 }

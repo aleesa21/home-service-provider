@@ -115,16 +115,23 @@
             background-color: #ffe6e6;
             /* Optional: light red background for emphasis */
         }
+        a {
+    text-decoration: none;
+}
+
     </style>
 </head>
 
 <body>
     <div class="login-container">
+    <a href="/">
         <div class="name">Home Service Provider</div>
+    </a>
 
         <!-- Login Form -->
         <form action="{{ route('loguser') }}" method="POST">
             @csrf
+            <input type="hidden" name="redirect" value="{{ request('redirect') }}">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control @error('email') is-invalid @enderror">

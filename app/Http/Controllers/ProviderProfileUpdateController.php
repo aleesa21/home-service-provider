@@ -49,28 +49,11 @@ class ProviderProfileUpdateController extends Controller
         $validatedData['service_type'] = json_encode($request->service_type);
     
 
-        //  // Handle photo upload
-        //  if ($request->hasFile('photo')) {
-        //     if ($user->photo) {
-        //         Storage::delete('public/profile_photos/' . $user->photo);
-        //     }
-        //     $photoPath = $request->file('photo')->store('profile_photos', 'public');
+        
            
 
-        //     $validatedData['photo'] = basename($photoPath);
-        // } 
-        // if ($request->hasFile('photo')) {
         
-        //     if ($user->photo) {
-        //         Storage::delete('public/' . $user->photo);
-        //     }
-        
-        //     // Store new photo and save the full path
-        //     $photoPath = $request->file('photo')->store('profile_photos', 'public');
-        
-        //     // Store full path in the database
-        //     $validatedData['photo'] = 'storage/' . $photoPath; // This ensures it's accessible in Blade
-        // }
+       
         if ($request->hasFile('photo')) {
             if ($user->photo) {
                 Storage::delete('public/' . $user->photo);

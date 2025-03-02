@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ProviderProfileForUserController;
 use App\Http\Controllers\ProviderProfileUpdateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
@@ -80,3 +81,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/ppupdate/{id}', [ProviderProfileUpdateController::class, 'update'])->name('provider.profile.update');
 });
+
+
+Route::get('/provider/{id}', [ProviderProfileForUserController::class, 'show'])->name('provider.details');

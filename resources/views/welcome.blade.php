@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('homepage.header')
+    @include('header.header')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
@@ -63,19 +63,36 @@
                         <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
                         @endif
                     </div>
+                    <span class="login-message">
+                    <a href="{{ route('login', ['redirect' => route('provider.details', ['id' => $provider->id])]) }}" class="login-link">
+    Login to see More Details
+</a>
+
+                            <!-- <a href="{{ route('login') }}" class="login-link">Login to see More Details</a> -->
+                            </span> 
                     <div class="provider-details">
                         <h3>{{ $provider->name }}</h3>
-                        <p><span>Email: </span>{{ $provider->email }}</p>
+                        <!-- <p><span>Email: </span>{{ $provider->email }}</p> -->
                         <p class="phone">
                             <span>Phone: </span>
                             xxx-xxxxxxx
-                            <span class="login-message">
-                                <a href="{{ route('login') }}" class="login-link">Login to see</a>
-                            </span>
+                            
+                           
                         </p>
                         <p><span>Address: </span>{{ $provider->address }}</p>
-                        <p><span>Service Type: </span>{{ $provider->service_type }}</p>
+                        <!-- <p><span>Service Type: </span>{{ $provider->service_type }}</p> -->
+                        @if($provider->service_type)
+                        <div class="service-type-label">Service Type:</div>
+                        <div class="service-types"> <!-- This container will hold the service badges -->
+                            @foreach(json_decode($provider->service_type, true) as $service)
+                            <div class="service-type">{{ $service }}</div>
+                            @endforeach
+                        </div>
+                        @endif
+                        
+
                     </div>
+                   
 
                 </div>
                 @endforeach

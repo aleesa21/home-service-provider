@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    @include('homepage.pheader')
+    @include('header.pheader')
+    @include('sidebar.providersidebar.psidebar')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provider Profile</title>
@@ -12,31 +13,53 @@
 
 <body>
     <div class="container">
-        <div class="profile-card">
-            <div class="profile-img">
-                @if($provider->photo)
-                
-                <img src="{{ Storage::url($provider->photo) }}" alt="Profile Image">
-                @else
-                <img src="{{ asset('images/default-profile.png') }}" alt="Default Profile Image">
-                @endif
+        @if(session('success'))
+            <div class="success-message">
+                {{ session('success') }}
             </div>
-            <div class="profile-details">
-                <h2>{{ $provider->name }}</h2>
-                <p><span>Email: </span>{{ $provider->email }}</p>
-                <p><span>Phone: </span>{{ $provider->phone }}</p>
-                <p><span>Address: </span>{{ $provider->address }}</p>
-                @if($provider->service_type)
-                @foreach(json_decode($provider->service_type, true) as $service)
-                <div class="service-type">{{ $service }}</div>
-                @endforeach
-                @endif
-            </div>
+        @endif
 
+        <div class="profile-wrapper">
+    <!-- Left Sidebar (Profile Image + Name) -->
+    <div class="profile-sidebar">
+        <div class="profile-image">
+            @if($provider->photo)
+                <img src="{{ Storage::url($provider->photo) }}" alt="Profile Image">
+            @else
+                <img src="{{ asset('images/default-profile.png') }}" alt="Default Profile Image">
+            @endif
         </div>
-        <a href="{{ route('provider.profile.edit', $provider->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded">
-            Edit Profile
-        </a>
+        <h3 class="provider-name">{{ $provider->name }}</h3>
+    </div>
+
+    <!-- Right Side: Profile Details -->
+    <div class="profile-details">
+        <h2 class="profile-title">Profile Details</h2>
+        
+        <div class="info-group">
+            <label>Address:</label>
+            <p>{{ $provider->address }}</p>
+        </div>
+        <div class="info-group">
+            <label>Email:</label>
+            <p>{{ $provider->email }}</p>
+        </div>
+        <div class="info-group">
+            <label>Phone:</label>
+            <p>{{ $provider->phone }}</p>
+        </div>
+
+        <h3 class="section-title">Service Types</h3>
+        <div class="service-types">
+            @if($provider->service_type)
+                @foreach(json_decode($provider->service_type, true) as $service)
+                    <span class="service-badge">{{ $service }}</span>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</div>
+
     </div>
 </body>
 

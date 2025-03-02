@@ -107,12 +107,17 @@
              background-color: #ffe6e6;
              /* Optional: light red background for emphasis */
          }
+         a {
+    text-decoration: none;
+}
      </style>
  </head>
 
  <body>
      <div class="register-container">
+     <a href="/">
          <div class="name">Home Service Provider</div>
+     </a>
          <form action="{{ route('reguser')}}" method="POST">
              @csrf
              <!-- Register as -->

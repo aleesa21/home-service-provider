@@ -24,16 +24,16 @@
         }
 
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: #32353c;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            background: #32353c !important;
+            padding: 15px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
         }
 
         .logo a {
@@ -49,14 +49,14 @@
         }
 
         .logout-button {
-            background-color: red;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background-color: red !important;
+            color: white !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            padding: 8px 16px !important;
+            border: none !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
         }
 
         .logout-button:hover {

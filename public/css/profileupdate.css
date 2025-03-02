@@ -1,4 +1,4 @@
-
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7fc;
@@ -10,6 +10,7 @@ body {
     min-height: 100vh;
 }
 
+/* Container */
 .container {
     max-width: 500px;
     width: 100%;
@@ -20,11 +21,13 @@ body {
     text-align: center;
 }
 
+/* Header */
 h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
+/* Form Groups */
 .form-group {
     text-align: left;
     margin-bottom: 15px;
@@ -36,7 +39,9 @@ h2 {
     margin-bottom: 5px;
 }
 
-.form-control {
+/* Input Fields */
+.form-control,
+input[name="service-type[]"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -44,12 +49,56 @@ h2 {
     font-size: 16px;
 }
 
-.text-danger {
-    color: red;
-    font-size: 14px;
+/* Service Type Input Container */
+#service-type-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-button {
+/* Dynamic Service Type Fields */
+.service-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* "Add More" Button */
+#add-service {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#add-service:hover {
+    background-color: #218838;
+}
+
+/* "Remove" Button */
+.remove-service {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-service:hover {
+    background-color: #c82333;
+}
+
+/* Submit Button */
+button[type="submit"] {
     background-color: #007bff;
     color: white;
     border: none;
@@ -61,6 +110,12 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+/* Error Messages */
+.text-danger {
+    color: red;
+    font-size: 14px;
 }
