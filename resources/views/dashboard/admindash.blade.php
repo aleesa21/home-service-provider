@@ -1,1 +1,0 @@
-<h1> successfully logged in to admin pannel</h1>

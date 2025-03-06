@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Sidebar</title>
+  <title>Sidebar</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,16 +16,17 @@
     }
 
     .sidebar {
-  width: 250px;
-  height: 100vh;
-  background-color: #1e1e2f;
-  color: white;
-  padding-top: 20px;
-  position: fixed;
-  left: 0;  /* Ensures sidebar stays on the left */
-  top: 0;
-  transition: width 0.3s ease;
-}
+      width: 250px;
+      height: 100vh;
+      background-color: #1e1e2f;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transition: width 0.3s ease;
+    }
+
     .sidebar h2 {
       text-align: center;
       font-size: 20px;
@@ -39,7 +40,6 @@
 
     .sidebar ul li {
       padding: 15px;
-      text-align: left;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -51,6 +51,7 @@
       color: white;
       text-decoration: none;
       flex: 1;
+      display: block;
     }
 
     .sidebar ul li:hover {
@@ -58,7 +59,7 @@
       cursor: pointer;
     }
 
-    /* Add active class to highlight current page */
+    /* Active link styling */
     .sidebar ul li.active {
       background-color: #007bff;
     }
@@ -66,27 +67,32 @@
     .sidebar ul li i {
       font-size: 18px;
     }
-
-   
   </style>
 </head>
 <body>
 
   <div class="sidebar">
-    <h2><span>{{ Auth::user()->name }}</span></h2>
+    <h2>{{ Auth::user()->name }}</h2>
     <ul>
-      <li><i class="fas fa-user"></i> <a href="{{ route('pdash', ['id' => Auth::user()->id]) }}">Profile</a></li>
-      <li class="active" ><i class="fas fa-edit"></i> <a href="{{ route('provider.profile.edit', ['id' => Auth::user()->id]) }}">Edit Profile</a></li>
-      <li ><i class="fas fa-star"></i> <a href="{{ route('provider.reviews', ['id' => $provider->id]) }}">Reviews</a></li>
-      <li ><i class="fas fa-home"></i> <a href="{{ route('provider.home') }}">Home</a></li>
-      <!-- <li><i class="fas fa-exclamation-circle"></i> <a href="#">Complain</a></li> -->
-
+    <li><i class="fas fa-home"></i> <a href="{{ route('adash') }}">Home</a></li>
+      <li><i class="fas fa-users"></i> <a href="{{ route('adashpprofile') }}">Providers</a></li>
+      <li><i class="fas fa-user"></i> <a href="{{ route('auserpprofile') }}">Users</a></li>
     </ul>
   </div>
 
-  <div class="content">
-    <!-- Your content here -->
-  </div>
+  <script>
+    // Get current page path
+    const currentPath = window.location.pathname;
+
+    // Select all sidebar links
+    const menuItems = document.querySelectorAll(".sidebar ul li a");
+
+    menuItems.forEach(item => {
+      if (currentPath === new URL(item.href).pathname) {
+        item.parentElement.classList.add("active"); // Add "active" class to <li>
+      }
+    });
+  </script>
 
 </body>
 </html>

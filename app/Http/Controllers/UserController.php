@@ -12,6 +12,11 @@ class UserController extends Controller
         $providers= User::where('role', 'Service-provider')->get();
         
         // Return the view with the providers data
-        return view('dashboard.userdash', compact('providers'));
+        return view('user.userdash', compact('providers'));
+    }
+    public function provider($id)
+    {
+        $provider = User::findOrFail($id);
+        return view('user.providerprofileforuser', compact('provider'));
     }
 }

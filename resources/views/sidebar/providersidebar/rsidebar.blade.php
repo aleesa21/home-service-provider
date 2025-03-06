@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Sidebar</title>
+  <title>Modern Sidebar</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
@@ -76,9 +76,9 @@
     <h2><span>{{ Auth::user()->name }}</span></h2>
     <ul>
       <li><i class="fas fa-user"></i> <a href="{{ route('pdash', ['id' => Auth::user()->id]) }}">Profile</a></li>
-      <li class="active" ><i class="fas fa-edit"></i> <a href="{{ route('provider.profile.edit', ['id' => Auth::user()->id]) }}">Edit Profile</a></li>
-      <li ><i class="fas fa-star"></i> <a href="{{ route('provider.reviews', ['id' => $provider->id]) }}">Reviews</a></li>
-      <li ><i class="fas fa-home"></i> <a href="{{ route('provider.home') }}">Home</a></li>
+      <li ><i class="fas fa-edit"></i> <a href="{{ route('provider.profile.edit', ['id' => Auth::user()->id]) }}">Edit Profile</a></li>
+      <li class="active"><i class="fas fa-star"></i> <a href="{{ route('provider.reviews', ['id' => $provider->id]) }}">Reviews</a></li>
+      <li><i class="fas fa-home"></i> <a href="{{ route('provider.home') }}">Home</a></li>
       <!-- <li><i class="fas fa-exclamation-circle"></i> <a href="#">Complain</a></li> -->
 
     </ul>

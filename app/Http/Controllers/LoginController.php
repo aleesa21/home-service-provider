@@ -28,10 +28,14 @@ class LoginController extends Controller
             // Regenerate the session ID to prevent session fixation
             $req->session()->regenerate();
 
-            // Check if a redirect URL exists
-            if ($req->has('redirect')) {
-                return redirect($req->redirect);
-            }
+            // // Check if a redirect URL exists
+            // if ($req->has('redirect')) {
+            //     return redirect($req->redirect);
+            // }
+            // Ensure the redirect URL is valid
+        if ($req->filled('redirect') && filter_var($req->redirect, FILTER_VALIDATE_URL)) {
+            return redirect($req->redirect);
+        }
     
 
             // Redirect based on user role

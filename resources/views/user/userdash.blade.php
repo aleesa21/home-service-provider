@@ -51,36 +51,36 @@
         </div>
         <!-- Available Service Providers Section -->
         <div class="providers-section">
-    <h2>Available Service Providers</h2>
-    <div class="providers-grid">
-        @foreach($providers as $provider)
-        <a href="{{ route('provider.details', $provider->id) }}" class="provider-link">
-        <div class="provider-card">
-            <div class="provider-img">
-                @if($provider->photo)
-                <img src="{{ Storage::url($provider->photo) }}" alt="{{ $provider->name }}">
-                @else
-                <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
-                @endif
-            </div>
-            <div class="provider-details">
-                <p>{{ $provider->name }}</p>
-                <!-- <p><span>Service Type: </span>{{ $provider->service_type }}</p> -->
-                @if($provider->service_type)
-                        <div class="service-type-label">Service Type:</div>
-                        <div class="service-types"> <!-- This container will hold the service badges -->
-                            @foreach(json_decode($provider->service_type, true) as $service)
-                            <div class="service-type">{{ $service }}</div>
-                            @endforeach
+            <h2>Available Service Providers</h2>
+            <div class="providers-grid">
+                @foreach($providers as $provider)
+                <a href="{{ route('provider.details', $provider->id) }}" class="provider-link">
+                    <div class="provider-card">
+                        <div class="provider-img">
+                            @if($provider->photo)
+                            <img src="{{ Storage::url($provider->photo) }}" alt="{{ $provider->name }}">
+                            @else
+                            <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
+                            @endif
                         </div>
-                        @endif
-                        
+                        <div class="provider-details">
+                            <p>{{ $provider->name }}</p>
+                            <!-- <p><span>Service Type: </span>{{ $provider->service_type }}</p> -->
+                            @if($provider->service_type)
+                            <div class="service-type-label">Service Type:</div>
+                            <div class="service-types"> <!-- This container will hold the service badges -->
+                                @foreach(json_decode($provider->service_type, true) as $service)
+                                <div class="service-type">{{ $service }}</div>
+                                @endforeach
+                            </div>
+                            @endif
+
+                        </div>
+                    </div>
+                </a>
+                @endforeach
             </div>
         </div>
-        </a>
-        @endforeach
-    </div>
-</div>
 
 
     </div>

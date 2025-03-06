@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
+    <title>Admindashboard</title>
 
     <style>
         body,
@@ -29,7 +29,7 @@
             width: 100%;
             z-index: 1000;
             background: #32353c;
-            padding: 15px 30px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -67,7 +67,7 @@
             margin-left: 5px;
             /* Reduced margin to make them closer */
             display: inline-block;
-            padding-left: 700px;
+            padding-left: 800px;
         }
 
         .navbar .user-info {
@@ -94,7 +94,6 @@
         .logout-button:focus {
             outline: none;
         }
-        
     </style>
 </head>
 
@@ -102,8 +101,9 @@
 
     <nav class="navbar">
         <div class="logo">
-            <a href="/userdash">Home Service Provider</a>
+            <a href="#">Home Service Provider</a>
         </div>
+
         <span>👤{{ Auth::user()->name }}</span>
         <div class="nav-links">
             <form action="{{ route('logout') }}" method="POST">

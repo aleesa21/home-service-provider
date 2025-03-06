@@ -102,9 +102,9 @@
 
     <nav class="navbar">
         <div class="logo">
-            <a href="/userdash">Home Service Provider</a>
+            <a href="{{ route('provider.home') }}">Home Service Provider</a>
         </div>
-        <span>👤{{ Auth::user()->name }}</span>
+        <span>👤 {{ Auth::user()->name }}</span>
         <div class="nav-links">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
