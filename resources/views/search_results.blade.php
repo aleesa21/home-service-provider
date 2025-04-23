@@ -1,64 +1,45 @@
-.main {
-    height: 1000vh; /* Increased height */
-    padding: 10px;
-}
+<!-- resources/views/search_results.blade.php -->
 
-/* Carousel Container */
-.carousel {
-    width: 100%;
-    height: 300px;
-    padding: 0; /* Adjust padding if necessary */
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(to bottom, #6a1b9a, #d500f9);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    text-align: center;
-    box-sizing: border-box; /* Ensures padding and border are included in height/width */
-}
+<!DOCTYPE html>
+<html lang="en">
 
-/* Carousel Track */
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Carousel Items */
-.carousel-item {
-    min-width: 100%;
-    height: 100%;
-}
+        .search-results {
+            margin: 20px;
+        }
 
-.carousel-item img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-   /* Ensures images fit properly */
-    border-radius: 10px;
-}
+        .search-results ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-/* Optional: Add Dots for Navigation */
-.carousel-dots {
-    text-align: center;
-    margin-top: 10px;
-}
+        .search-results li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+        }
 
-.carousel-dots span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin: 5px;
-    background-color: white;
-    border-radius: 50%;
-    cursor: pointer;
-}
+        .search-results li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+        }
 
-.carousel-dots span.active {
-    background-color: #d500f9;
-}
-
-/* Add styles for the services section */
+        .search-results li a:hover {
+            color: #1588fc;
+        }
+        /* Add styles for the services section */
 .services-section {
     position: relative;
     top: -80px; /* Adjust this value to float above the carousel */
@@ -216,3 +197,73 @@
 }
 
 
+
+    </style>
+</head>
+
+<body>
+    <div class="search-results">
+        <h2>Search Results</h2>
+        <ul>
+            @if($users->isEmpty())
+                <li>No results found.</li>
+            @else
+                <!-- @foreach($users as $user)
+                    <li>
+                        <a href="#">{{ $user->name }}</a>
+                        <br>
+                        Service Type: {{ $user->service_type }}<br>
+                        Location: {{ $user->address }}
+                    </li>
+                @endforeach -->
+                <div class="providers-grid">
+                @foreach($users as $users)
+                <div class="provider-card">
+                    <div class="provider-img">
+                        @if($users->photo)
+                        <img src="{{ Storage::url($users->photo) }}" alt="{{ $users->name }}">
+                        @else
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Default Image">
+                        @endif
+                    </div>
+                    <span class="login-message">
+                        <a href="{{ route('login', ['redirect' => route('provider.details', ['id' => $users->id])]) }}" class="login-link">
+                            Login to see More Details
+                        </a>
+
+                    </span>
+                    <div class="provider-details">
+                        <h3>{{ $users->name }}</h3>
+                        <p class="phone">
+                            <span>Phone: </span>
+                            xxx-xxxxxxx
+
+
+                        </p>
+                        <p><span>Address: </span>{{ $users->address }}</p>
+                        @if($users->service_type)
+                        <div class="service-type-label">Service Type:</div>
+                        <div class="service-types"> <!-- This container will hold the service badges -->
+                            @foreach(json_decode($users->service_type, true) as $service)
+                            <div class="service-type">{{ $service }}</div>
+                            @endforeach
+                        </div>
+                        @endif
+
+
+                    </div>
+
+
+                </div>
+                @endforeach
+            </div>
+
+
+
+
+            @endif
+        </ul>
+    </div>
+</body>
+
+</html>

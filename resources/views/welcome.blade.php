@@ -64,20 +64,20 @@
                         @endif
                     </div>
                     <span class="login-message">
-                    <a href="{{ route('login', ['redirect' => route('provider.details', ['id' => $provider->id])]) }}" class="login-link">
-    Login to see More Details
-</a>
+                        <a href="{{ route('login', ['redirect' => route('provider.details', ['id' => $provider->id])]) }}" class="login-link">
+                            Login to see More Details
+                        </a>
 
-                            <!-- <a href="{{ route('login') }}" class="login-link">Login to see More Details</a> -->
-                            </span> 
+                        <!-- <a href="{{ route('login') }}" class="login-link">Login to see More Details</a> -->
+                    </span>
                     <div class="provider-details">
                         <h3>{{ $provider->name }}</h3>
                         <!-- <p><span>Email: </span>{{ $provider->email }}</p> -->
                         <p class="phone">
                             <span>Phone: </span>
                             xxx-xxxxxxx
-                            
-                           
+
+
                         </p>
                         <p><span>Address: </span>{{ $provider->address }}</p>
                         <!-- <p><span>Service Type: </span>{{ $provider->service_type }}</p> -->
@@ -89,10 +89,10 @@
                             @endforeach
                         </div>
                         @endif
-                        
+
 
                     </div>
-                   
+
 
                 </div>
                 @endforeach
