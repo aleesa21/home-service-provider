@@ -61,7 +61,7 @@ class AdminController extends Controller
         $provider->delete();
 
         // Redirect back with a success message
-        return redirect()->route('admin.adminproprofile')->with('success', 'Provider deleted successfully!');
+        return redirect()->route('adashpprofile')->with('success', 'Provider deleted successfully!');
     }
     public function user()
     {
